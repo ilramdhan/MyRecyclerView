@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         rvHeroes = findViewById(R.id.rv_heroes)
         rvHeroes.setHasFixedSize(true)
 
@@ -42,10 +43,10 @@ class MainActivity : AppCompatActivity() {
     private fun getListHeroes(): ArrayList<Hero> {
         val dataName = resources.getStringArray(R.array.data_name)
         val dataDescription = resources.getStringArray(R.array.data_description)
-        val dataPhoto = resources.obtainTypedArray(R.array.data_photo)
+        val dataPhoto = resources.getStringArray(R.array.data_photo)
         val listHero = ArrayList<Hero>()
         for (i in dataName.indices) {
-            val hero = Hero(dataName[i], dataDescription[i], dataPhoto.getResourceId(i, -1))
+            val hero = Hero(dataName[i], dataDescription[i], dataPhoto[i])
             listHero.add(hero)
         }
         return listHero
